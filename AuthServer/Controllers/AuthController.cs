@@ -1,4 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace AuthServer.Controllers;
 
@@ -6,47 +11,65 @@ namespace AuthServer.Controllers;
 [ApiController]
 public class AuthController : ControllerBase
 {
-    [HttpPost("login")]
-    public IActionResult Login([FromBody] LoginRequest request)
-    {
-        // Đây là demo đơn giản, trong thực tế cần kiểm tra database
-        if (request.Username == "admin" && request.Password == "password")
-        {
-            return Ok(new
-            {
-                Token = "demo-jwt-token-12345",
-                Username = request.Username,
-                ExpiresIn = 3600
-            });
-        }
+    private readonly IOptions<JwtSettings> _settings;
 
-        return Unauthorized(new { Message = "Invalid username or password" });
+    public AuthController(IOptions<JwtSettings> settings)
+    {
+        _settings = settings;
     }
 
-    [HttpPost("validate")]
-    public IActionResult ValidateToken([FromBody] TokenRequest request)
+    [HttpGet]
+    public IActionResult Get(string name, string pwd)
     {
-        // Đây là demo đơn giản, trong thực tế cần validate JWT token
-        if (!string.IsNullOrEmpty(request.Token))
+        // Just hard code here - for demo purposes only
+        if (name == "catcher" && pwd == "123")
         {
-            return Ok(new
+            var now = DateTime.UtcNow;
+            
+            var claims = new Claim[]
             {
-                IsValid = true,
-                Username = "admin"
-            });
+                new Claim(JwtRegisteredClaimNames.Sub, name),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(JwtRegisteredClaimNames.Iat, now.ToUniversalTime().ToString(), ClaimValueTypes.Integer64)
+            };
+
+            var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_settings.Value.Secret));
+            
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = signingKey,
+                ValidateIssuer = true,
+                ValidIssuer = _settings.Value.Iss,
+                ValidateAudience = true,
+                ValidAudience = _settings.Value.Aud,
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero,
+                RequireExpirationTime = true,
+            };
+
+            var jwt = new JwtSecurityToken(
+                issuer: _settings.Value.Iss,
+                audience: _settings.Value.Aud,
+                claims: claims,
+                notBefore: now,
+                expires: now.Add(TimeSpan.FromMinutes(2)),
+                signingCredentials: new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256)
+            );
+
+            var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
+
+            var responseJson = new
+            {
+                access_token = encodedJwt,
+                expires_in = (int)TimeSpan.FromMinutes(2).TotalSeconds
+            };
+
+            return Ok(responseJson);
         }
-
-        return BadRequest(new { Message = "Invalid token" });
+        else
+        {
+            return Unauthorized(new { message = "Invalid credentials" });
+        }
     }
-}
-
-public class LoginRequest
-{
-    public string Username { get; set; } = string.Empty;
-    public string Password { get; set; } = string.Empty;
-}
-
-public class TokenRequest
-{
-    public string Token { get; set; } = string.Empty;
 }

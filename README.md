@@ -1,5 +1,8 @@
 # Microservices Demo với API Gateway
 
+> 🎉 **Step 2 đã hoàn thành!** AuthServer với JWT token generation đã sẵn sàng.  
+> 📚 Xem [STEP2_INDEX.md](STEP2_INDEX.md) để truy cập tất cả tài liệu Step 2.
+
 ## Giới thiệu
 
 Dự án này demo kiến trúc microservices với 4 project:
