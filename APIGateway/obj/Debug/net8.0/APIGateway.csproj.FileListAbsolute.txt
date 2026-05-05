@@ -37,3 +37,12 @@
 /Users/minhkhanhnguyen/Desktop/Lab8/APIGateway/obj/Debug/net8.0/APIGateway.pdb
 /Users/minhkhanhnguyen/Desktop/Lab8/APIGateway/obj/Debug/net8.0/APIGateway.genruntimeconfig.cache
 /Users/minhkhanhnguyen/Desktop/Lab8/APIGateway/obj/Debug/net8.0/ref/APIGateway.dll
+/Users/minhkhanhnguyen/Desktop/Lab8/APIGateway/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/minhkhanhnguyen/Desktop/Lab8/APIGateway/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/minhkhanhnguyen/Desktop/Lab8/APIGateway/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/minhkhanhnguyen/Desktop/Lab8/APIGateway/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/Users/minhkhanhnguyen/Desktop/Lab8/APIGateway/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll
+/Users/minhkhanhnguyen/Desktop/Lab8/APIGateway/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/minhkhanhnguyen/Desktop/Lab8/APIGateway/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+/Users/minhkhanhnguyen/Desktop/Lab8/APIGateway/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/minhkhanhnguyen/Desktop/Lab8/APIGateway/obj/Debug/net8.0/APIGateway.sourcelink.json
