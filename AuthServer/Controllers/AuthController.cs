@@ -33,7 +33,7 @@ public class AuthController : ControllerBase
                 new Claim(JwtRegisteredClaimNames.Iat, now.ToUniversalTime().ToString(), ClaimValueTypes.Integer64)
             };
 
-            var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_settings.Value.Secret));
+            var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_settings.Value.Secret));
             
             var tokenValidationParameters = new TokenValidationParameters
             {

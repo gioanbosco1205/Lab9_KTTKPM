@@ -31,3 +31,12 @@
 /Users/minhkhanhnguyen/Desktop/Lab8/CustomersAPI/obj/Debug/net8.0/CustomersAPI.pdb
 /Users/minhkhanhnguyen/Desktop/Lab8/CustomersAPI/obj/Debug/net8.0/CustomersAPI.genruntimeconfig.cache
 /Users/minhkhanhnguyen/Desktop/Lab8/CustomersAPI/obj/Debug/net8.0/ref/CustomersAPI.dll
+/Users/minhkhanhnguyen/Desktop/Lab8/CustomersAPI/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/minhkhanhnguyen/Desktop/Lab8/CustomersAPI/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/minhkhanhnguyen/Desktop/Lab8/CustomersAPI/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/minhkhanhnguyen/Desktop/Lab8/CustomersAPI/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/Users/minhkhanhnguyen/Desktop/Lab8/CustomersAPI/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll
+/Users/minhkhanhnguyen/Desktop/Lab8/CustomersAPI/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/minhkhanhnguyen/Desktop/Lab8/CustomersAPI/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+/Users/minhkhanhnguyen/Desktop/Lab8/CustomersAPI/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/minhkhanhnguyen/Desktop/Lab8/CustomersAPI/obj/Debug/net8.0/CustomersAPI.sourcelink.json
